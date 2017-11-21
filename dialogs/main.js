@@ -14,7 +14,7 @@ const script = {
 	},
 
 	A: {
-		text: 	'Sure, which are you?', 
+		text: 	'OK, which are you?', 
 		options: {
 			'I\'m a tenant': 	'B1',
 			'I\'m a landlord': 		'B2'
@@ -314,6 +314,9 @@ for (var partname in script) {
 		steps.push(
 			function (session) {
 				session.send(txt);
+
+				//text-only steps are ENDS
+				session.beginDialog('end');
 			}
 		);
 	}

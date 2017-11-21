@@ -9,7 +9,15 @@ module.exports = [
             ['Yes', 'No'],
             { listStyle: builder.ListStyle.button });
     },
-    (session, result) => {
-        session.send('Whatevs...');
+    (session, result, next) => {
+        if (result.response.entity == 'Yes')
+            session.send('Send more info...');
+        else
+            session.send('OK');
+
+        next();
+    },
+    (session) => {
+        session.beginDialog('end');
     }
 ];

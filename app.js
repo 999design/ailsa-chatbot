@@ -40,6 +40,10 @@ bot.on('conversationUpdate', function (message) {
 bot.dialog('/', [
     (session) => {
         session.beginDialog(entry);
+
+    },
+    (session) => {
+        session.send('END?');
     }
 ]);
 
