@@ -18,12 +18,12 @@ const script = {
 	},
 
 	B1: {
-		text: 	"Great! Do you rent from a private landlord or a letting agent?", 
+		text: 	"OK! Do you rent from a private landlord or a letting agent?", 
 		options: {
 			"Yes": 										"C1",
-			"Yes, but I live with my landlord": 		"na",
-			"No": 										 "na",
-			"I don\"t know what type of tenancy I have": "C2",
+			"Yes, but I live with my landlord": 		"C1a",
+			"No": 										 "C1b",
+			"I don't know what type of tenancy I have": "C2",
 		}
 	},
 
@@ -38,15 +38,30 @@ const script = {
 	C1: {
 		text: 	"Did you sign your tenancy agreement or move in before 1st December 2017?", 
 		options: {
-			"Yes": 							"na",
+			"Yes": 							"D0",
 			"No, after the 1st December": 	"D1"
 		}
 	},
 
+	C1a: {
+		text: 	"If you live with your landlord then you're a common law tenant and the Private Residential Tenancy doesn't apply.", 
+		options: {
+			"OK": 							"end"
+		}
+	},
+
+	C1b: {
+		text: 	"If you're not a tenant then the private tenancy doesn't apply to you.", 
+		options: {
+			"OK": 							"end"
+		}
+	},
+
 	C2: {
-		text: 	"Use this tool to find out, if you're a Short Assured Tenant, come back to find out how PRT might affect you.", 
-		
-		//restart? short assured tenant option?
+		text: 	"Use <a href=\"https://scotland.shelter.org.uk/get_advice/downloads_and_tools/online_checkers/what_kind_of_tenancy_do_i_have\">this tool</a> to find out what type of tenancy you have, then come back to find out how PRT might affect you.", 
+		options: {
+			"Start again": 					"B1"
+		}
 	},
 
 	C3: {
@@ -57,6 +72,17 @@ const script = {
 			"Disputes": 				"D4"
 		}
 	},
+
+	D0: {
+		text: 	"If you were already renting and were an assured or short assured tenant, on 1 December 2017, your tenancy will continue as normal until you or your landlord bring it to an end following the correct procedure. If your landlord then offers you a new tenancy this will be a private residential tenancy. I can tell you more about the Private Residential Tenancy anyway - what would you like to know more about?",
+		options: {
+			"Rent, deposits and fees": 			"E1",
+			"My tenancy agreement": 			"E2",
+			"Your rights and responsibilities": "E3"
+		}
+	},
+ 
+	
 
 	D1: {
 		text: 	"OK, that means the Private Residencial Tenancy applies to you. What would you like to know more about?", 
