@@ -7,17 +7,10 @@ var builder = require('botbuilder');
 const script = {
 
 	entry: {
-		text: 	'We can help you find out what the Private Residential Tenancy will mean to you if you\'re a private landlord or tenant.', 
+		text: 	'Hello, I&rsquo;m Ailsa, and I&rsquo;m a robot. &#x1F916 I can help you find out what the Private Residential Tenancy will mean to you if you&rsquo;re a private landlord or tenant. Are you a landlord or a tenant?',
 		options: {
-			'Find out more': 	'A'
-		} 
-	},
-
-	A: {
-		text: 	'OK, which are you?', 
-		options: {
-			'I\'m a tenant': 	'B1',
-			'I\'m a landlord': 		'B2'
+			'I&rsquo;m a tenant': 	'B1',
+			'I&rsquo;m a landlord': 		'B2'
 		}, 
 		action: (session, next) => {
 			console.log('action');
