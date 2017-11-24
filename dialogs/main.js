@@ -9,8 +9,8 @@ const script = {
 	entry: {
 		text: 	"Hello, I'm Ailsa, and I'm a robot. " + String.fromCharCode(0xD83E, 0xDD16) + " I can help you find out what the Private Residential Tenancy will mean to you if you're a private landlord or tenant. Are you a landlord or a tenant?",
 		options: {
-			"I&rsquo;m a tenant": 	"B1",
-			"I&rsquo;m a landlord": 		"B2"
+			"I'm a tenant": 	"B1",
+			"I'm a landlord": 		"B2"
 		}, 
 		action: (session, next) => {
 			console.log("action");
