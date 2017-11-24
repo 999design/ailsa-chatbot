@@ -54,7 +54,7 @@ for (var dialog in mains)
 
 //Sub-Dialogs
 bot.dialog('end', require('./dialogs/end'));
-bot.dialog('na', require('./dialogs/na'));
+//bot.dialog('na', require('./dialogs/na'));
 
 //Let's go
 server.post('/api/messages', connector.listen());
