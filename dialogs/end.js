@@ -1,4 +1,7 @@
 var builder = require('botbuilder');
+var analytics = require('../analytics');
+
+const startPoint = "B1";
 
 module.exports = [
     (session) => {
@@ -10,7 +13,7 @@ module.exports = [
     },
     (session, result) => {
         if (result.response.entity == 'Yes') {
-            session.send("Great, have a good day! And remember if you need housing advice in the future you can visit out Get Advice pages. https://scotland.shelter.org.uk/get_advice");
+            session.send("Great, have a good day! And remember if you need housing advice in the future you can visit our Get Advice pages. https://scotland.shelter.org.uk/get_advice");
 
         	builder.Prompts.choice(session,
 	            'Would you like to find out anything else?',
@@ -31,7 +34,7 @@ module.exports = [
     (session, result) => {
     	if (result.response.entity == 'Yes')
     		//this is tenant/landlord choice, should remember!
-            session.beginDialog('A');
+            session.beginDialog(startPoint);
         else 
             session.send('OK, bye for now!');
     }

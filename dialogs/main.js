@@ -1,4 +1,5 @@
 var builder = require("botbuilder");
+var analytics = require('../analytics');
 
 // =============================================
 // CONTENT
@@ -30,8 +31,8 @@ const script = {
 	B2: {
 		text: 	"OK, great. Do your tenants live with you?", 
 		options: {
-			"Yes": 	"na",
-			"No": 	"C3"
+			"Yes": 	"C3",
+			"No": 	"C4"
 		}
 	},
 
@@ -59,11 +60,18 @@ const script = {
 	},
 
 	C3: {
-		text: 	"PRT applies to any tenants who moved in or signed their agreements on or after December 1st 2017. What would you like to know more about?", 
+		text: 	"If your tenants live with you then they are a common law tenant and the private residential tenancy doesn't apply. I can tell you more about the Private Residential Tenancy anyway? What would you like to know more about?",		options: {
+			"Rent, deposits and fees": 	"E4",
+			"Tenancy agreements": 		"E5",
+			"Disputes": 				"E6"
+		}
+	},
+
+	C4: {
+		text: 	"Did your tenants move in after 1st December 2017?",
 		options: {
-			"Rent, deposits and fees": 	"D2",
-			"Tenancy agreements": 		"D3",
-			"Disputes": 				"D4"
+			"Yes": 							"D2",
+			"No, before the 1st December": 	"D3"
 		}
 	},
 

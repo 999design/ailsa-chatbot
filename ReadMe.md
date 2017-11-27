@@ -14,3 +14,9 @@ Direct Line secrets:
 Le6tYf9wYy4.cwA.pwY.BlPbdlQrhmUh0bfo7dHXj7H4PF_qe_wXZu1GCI9_CaI
 
 Le6tYf9wYy4.cwA.MG8.tx_V46xvFWyHgfEldOgn2oJU7d4-pTf3aOHgjd7rYco
+
+
+Load testing notes:
+
+https://blog.botframework.com/2017/06/19/load-testing-a-bot/
+https://github.com/thirumathi/bottestvsts
