@@ -20,6 +20,7 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 });
 
 
+//This works in emulator, not facebook/directline for webchat
 /*Handle hello/bye
 bot.on('conversationUpdate', function (message) {
     console.dir(message);
@@ -39,7 +40,6 @@ bot.on('conversationUpdate', function (message) {
 */
 bot.dialog('/', 
     (session) => {
-        session.send('Hi!');
         session.beginDialog(entry);
     }
 );
