@@ -1,5 +1,6 @@
 var builder = require('botbuilder');
 var restify = require('restify');
+var analytics = require('./analytics');
 
 require('dotenv').load();
 
@@ -19,27 +20,33 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
     console.log('%s listening to %s', server.name, server.url);
 });
 
-
 //This works in emulator, not facebook/directline for webchat
-/*Handle hello/bye
+//Handle hello/bye
 bot.on('conversationUpdate', function (message) {
     console.dir(message);
     if (message.membersAdded) {
         message.membersAdded.forEach(function (identity) {
             if (identity.id != message.address.bot.id) {
                 //someone other than us got added
-
-                bot.beginDialog(message.address, '/');
+                console.log('User joined?');
+                //bot.beginDialog(message.address, '/');
                 
+            }
+            else if (identity.id == message.address.bot.id) {
+                //we joined?
+                bot.beginDialog(message.address, '/');
             }
         });
     }
     // can say bye on message.membersRemoved
 
 });
-*/
+
 bot.dialog('/', 
     (session) => {
+
+        analytics.start(session.message.address.conversation.id);
+
         session.beginDialog(entry);
     }
 );
@@ -51,7 +58,6 @@ for (var dialog in mains)
 
 //Sub-Dialogs
 bot.dialog('end', require('./dialogs/end'));
-//bot.dialog('na', require('./dialogs/na'));
 
 //Let's go
 server.post('/api/messages', connector.listen());

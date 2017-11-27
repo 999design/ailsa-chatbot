@@ -8,7 +8,7 @@ var analytics = require('../analytics');
 const script = {
 
 	entry: {
-		text: 	"Hello, I'm Ailsa, and I'm a robot. " + String.fromCharCode(0xD83E, 0xDD16) + " I can help you find out what the Private Residential Tenancy will mean to you if you're a private landlord or tenant. Are you a landlord or a tenant?",
+		text: 	"Hello, I'm Ailsa, and I'm a robot. " + String.fromCharCode(0xD83E, 0xDD16) + "\n\n\n\nI can help you find out what the Private Residential Tenancy will mean to you if you're a private landlord or tenant. Are you a landlord or a tenant?",
 		options: {
 			"I'm a tenant": 	"B1",
 			"I'm a landlord": 		"B2"
@@ -201,20 +201,21 @@ const script = {
 
 	F6: {
 		text: 	"You have the right to a tenancy agreement, which can be either a written or electronic copy. You should get this on the day you move in, if not, you should get one within 28 days of the start of the tenancy."
-				+ "\nThe Scottish Government has published a model tenancy that your landlord can use to set up a tenancy. This tenancy agreement contains certain statutory terms that outline both parties rights and obligations. http://www.gov.scot/Publications/2017/10/3669"
+				+ "\n\n\n\nThe Scottish Government has published a model tenancy that your landlord can use to set up a tenancy. This tenancy agreement contains certain statutory terms that outline both parties rights and obligations. http://www.gov.scot/Publications/2017/10/3669"
 
 		//end!
 	},
 
 	F7: {
 		text: 	"Your landlord will need to give you either 28 or 84 days notice that they intend to apply for an eviction notice. The period of notice will depend on how long you have been in the property and which one of the 18 grounds they are using to apply for eviction. The form that your landlord needs to use is called a 'notice to leave', this replaces the old 'notice to quit'"
-				+ "\nIf you haven't left the property after the notice period is over, then the landlord will then have to apply to the Housing and Property Chamber of the First Tier Tribunal for an eviction order. https://scotland.shelter.org.uk/get_advice/advice_topics/eviction/eviction_of_private_tenants/eviction_of_private_residential_tenancy_tenants"
+				+ "\n\n\n\nIf you haven't left the property after the notice period is over, then the landlord will then have to apply to the Housing and Property Chamber of the First Tier Tribunal for an eviction order. https://scotland.shelter.org.uk/get_advice/advice_topics/eviction/eviction_of_private_tenants/eviction_of_private_residential_tenancy_tenants"
 
 		//end!
 	},
 
 	F8: {
-		text: 	"Your landlord will need to give you either 28 or 84 days notice that they intend to apply for an eviction notice. The period of notice will depend on how long you havr been in the property and which one of the new 18 grounds they are applying for eviction. The form that your landlord needs to use is called a ‘notice to leave’.\n If you haven't  left the property after the notice period is over, then the landlord will then have to apply to the Housing and Property Chamber of the First Tier Tribunal for an eviction order."
+		text: 	"Your landlord will need to give you either 28 or 84 days notice that they intend to apply for an eviction notice. The period of notice will depend on how long you havr been in the property and which one of the new 18 grounds they are applying for eviction. The form that your landlord needs to use is called a ‘notice to leave’."
+				+"\n\n\n\n If you haven't  left the property after the notice period is over, then the landlord will then have to apply to the Housing and Property Chamber of the First Tier Tribunal for an eviction order."
 
 		//end!
 	},
@@ -256,8 +257,8 @@ const script = {
 
 	F15: {
 		text: 	"A private residential tenancy can be ended by a tenant giving notice and leaving or a tenant agreeing with the landlord to leave. If neither of these happens and the landlord is wanting possession of the property then they will have to get an eviction order from the Housing and Property Chamber of the First Tier Tribunal."
-				+"\nYou will need to give your tenant either 28 or 84 days notice that you intend to apply for an eviction notice. The period of notice will depend on how long the tenant has been in the property and which ground you are applying for eviction. The form you need to use is called a ‘notice to leave’, this replaces the old 'notice to quit'."
-				+"\nIf the tenant is still in the property after the notice period is over, you will then have to apply to the Housing and Property Chamber of the First Tier Tribunal for an eviction order.  https://www.housingandpropertychamber.scot/"
+				+"\n\n\n\nYou will need to give your tenant either 28 or 84 days notice that you intend to apply for an eviction notice. The period of notice will depend on how long the tenant has been in the property and which ground you are applying for eviction. The form you need to use is called a ‘notice to leave’, this replaces the old 'notice to quit'."
+				+"\n\n\n\nIf the tenant is still in the property after the notice period is over, you will then have to apply to the Housing and Property Chamber of the First Tier Tribunal for an eviction order.  https://www.housingandpropertychamber.scot/"
 
 		//end!
 	},
@@ -275,8 +276,8 @@ const script = {
 
 	F18: {
 		text: 	"If you are wanting possession of the property, and the tenants are refusing to move out, you will have to get an eviction order from the Housing and Property Chamber of the First Tier Tribunal."
-				+"\nYou will need to give your tenant either 28 or 84 days notice that you intend to apply for an eviction notice. The period of notice will depend on how long the tenant has been in the property and which ground you are applying for eviction. The form you need to use is called a ‘notice to leave’, this replaces the old 'notice to quit'."
-				+"\nIf the tenant is still in the property after the notice period is over, you will then have to apply to the Housing and Property Chamber of the First Tier Tribunal for an eviction order. Link: https://www.housingandpropertychamber.scot/"
+				+"\n\n\n\nYou will need to give your tenant either 28 or 84 days notice that you intend to apply for an eviction notice. The period of notice will depend on how long the tenant has been in the property and which ground you are applying for eviction. The form you need to use is called a ‘notice to leave’, this replaces the old 'notice to quit'."
+				+"\n\n\n\nIf the tenant is still in the property after the notice period is over, you will then have to apply to the Housing and Property Chamber of the First Tier Tribunal for an eviction order. Link: https://www.housingandpropertychamber.scot/"
 
 		//end!
 	},

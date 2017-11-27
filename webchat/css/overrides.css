@@ -1,14 +1,12 @@
 
 .wc-chatview-panel {
-	z-index: 9999999;
-	right: 120px;
-    bottom: 60px;
+	right: 100px;
+    bottom: 20px;
     height: 500px;
     width: 400px;
     left: inherit;
     top: inherit;
     border: 1px solid #ECECEC;
-    background: #FFF;
 }
 
 .wc-console {
@@ -17,14 +15,6 @@
 
 .wc-console .wc-textbox {
 	left: 8px;
-}
-
-.wc-textbox input[type=text] {
-	color: #000;
-}
-
-.wc-textbox input[type=text]:focus, .wc-textbox input[type=text]:hover {
-	background: #FFF;
 }
 
 /* hide stuff */
@@ -49,10 +39,9 @@
 	content: 'Any questions? Ask Ailsa...';
 }
 
-.wc-header button {
-    background: transparent;
-    border: none;
-    float: right;
+.wc-message-content p, .wc-message-content span {
+	font-size: 1rem;
+	line-height: 1.2rem;
 }
 
 /* User */
