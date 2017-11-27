@@ -20,9 +20,9 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 });
 
 
-//Handle hello/bye
+/*Handle hello/bye
 bot.on('conversationUpdate', function (message) {
-
+    console.dir(message);
     if (message.membersAdded) {
         message.membersAdded.forEach(function (identity) {
             if (identity.id != message.address.bot.id) {
@@ -36,9 +36,10 @@ bot.on('conversationUpdate', function (message) {
     // can say bye on message.membersRemoved
 
 });
-
+*/
 bot.dialog('/', 
     (session) => {
+        session.send('Hi!');
         session.beginDialog(entry);
     }
 );

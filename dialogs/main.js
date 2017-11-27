@@ -297,7 +297,7 @@ const script = {
 
 
 // =============================================
-// BUILD DIALOG
+// BUILD DIALOGS
 
 var dialogs = {};
 
@@ -336,7 +336,7 @@ for (var partname in script) {
 
 	} else {
 		steps.push(
-			function (session) {
+			(session) => {
 				session.send(txt);
 
 				//text-only steps are ENDS
