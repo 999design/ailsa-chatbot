@@ -5,9 +5,9 @@ var visitors = {};
 
 //random ID will be generated, everything will look like this user (until restart)
 function init(uid) {
-	console.log('Init analytics', uid);
-
 	if (!visitors[uid]) {
+		console.log('Init analytics', uid);
+
 		visitors[uid] = ua(process.env.ANALYTCIS_ID, uid);
 
 		//don;t seem to get events without pageview? so log a dummy one

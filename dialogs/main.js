@@ -317,7 +317,8 @@ for (var partname in script) {
 
 		steps.push(
 			(session) => {
-				
+				analytics.view(session.message.address.conversation.id, partname);
+
 				builder.Prompts.choice(session,
 		            txt,
 		            options,
@@ -328,6 +329,8 @@ for (var partname in script) {
 
 		steps.push(
 			(session, result, next) => {
+				analytics.answer(session.message.address.conversation.id, result.response.entity);
+				
 		        for (var opt in part.options) {
 					if (result.response.entity == opt)
 						session.beginDialog(part.options[opt]);
@@ -338,6 +341,8 @@ for (var partname in script) {
 	} else {
 		steps.push(
 			(session) => {
+				analytics.view(session.message.address.conversation.id, partname);
+
 				session.send(txt);
 
 				//text-only steps are ENDS
