@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+	<meta charset="UTF-8">
+	<!--link href="https://cdn.botframework.com/botframework-webchat/latest/botchat.css" rel="stylesheet" /-->
+	<link href="css/botchat.css" rel="stylesheet" /> 
+	<link href="css/botchat_overrides.css" rel="stylesheet" /> 
+</head> 
+<body> 
+	<div id="bot"/> 
+
+	<script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script> 
+	<script> 
+		var direct_line_secret = 'Le6tYf9wYy4.cwA.pwY.BlPbdlQrhmUh0bfo7dHXj7H4PF_qe_wXZu1GCI9_CaI';
+		var botid = '5c8de76c-5adb-4cdf-882c-f7758bb24021';
+
+		BotChat.App({ directLine: { secret: direct_line_secret }, user: { id: 'userid' }, bot: { id: botid }, resize: 'detect' }, document.getElementById("bot")); 
+	</script> 
+</body> 
+</html>

@@ -1,0 +1,100 @@
+
+.wc-chatview-panel {
+	z-index: 9999999;
+	right: 120px;
+    bottom: 60px;
+    height: 500px;
+    width: 400px;
+    left: inherit;
+    top: inherit;
+    border: 1px solid #ECECEC;
+    background: #FFF;
+}
+
+.wc-console {
+	border: 1px solid #ECECEC;
+}
+
+.wc-console .wc-textbox {
+	left: 8px;
+}
+
+.wc-textbox input[type=text] {
+	color: #000;
+}
+
+.wc-textbox input[type=text]:focus, .wc-textbox input[type=text]:hover {
+	background: #FFF;
+}
+
+/* hide stuff */
+.wc-message svg.wc-message-callout, .wc-message-from, .wc-console label.wc-upload {
+	display: none;
+}
+
+.ac-container div:nth-of-type(2) {
+	display: none;
+}
+
+/* All */
+.wc-header {
+	background-color: #DD1520;
+}
+
+.wc-header span {
+	display: none;
+}
+
+.wc-header:after {
+	content: 'Any questions? Ask Ailsa...';
+}
+
+/* User */
+.wc-message-from-me .wc-message-content {
+	padding:20px;
+	border-radius: 15px 15px 0 15px;
+    background-color: #DD1520;
+    color: #FFFFFF;
+}
+
+/* Bot */
+.wc-message-from-bot {
+	margin-left:0;
+	background: url(../img/Ailsa400.png) left center/50px 50px no-repeat;
+}
+
+.wc-message-from-bot .wc-message-content {
+	margin-left: 60px;
+	border-radius: 0 15px 15px 15px;
+    background-color: #ECECEC;
+	border: 1px solid #ECECEC;
+    box-shadow: none;
+    padding: 20px 0 0 0;
+}
+
+.wc-message-from-bot .wc-message-content .format-markdown {
+	padding: 0 20px 20px 20px;
+}
+
+.wc-message-from-bot .wc-message-content .wc-card{
+	border-radius: 0 0 15px 15px;
+	border: none;
+}
+
+.wc-adaptive-card {
+	width: 100%;
+}
+
+.wc-card .ac-container {
+	padding: 0 !important;
+}
+
+.wc-card button:last-of-type {
+	border-radius: 0 0 15px 15px;
+}
+
+.wc-card button, .wc-card button:hover {
+	color: #DD1520;
+	border:none;
+	border-top: 1px solid #ECECEC;;
+}
