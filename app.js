@@ -37,15 +37,11 @@ bot.on('conversationUpdate', function (message) {
 
 });
 
-bot.dialog('/', [
+bot.dialog('/', 
     (session) => {
         session.beginDialog(entry);
-
-    },
-    (session) => {
-        session.send('END?');
     }
-]);
+);
 
 //mains
 var mains = require('./dialogs/main');
