@@ -1,3 +1,5 @@
+'use strict';
+
 var builder = require("botbuilder");
 var analytics = require('../analytics');
 
