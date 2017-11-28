@@ -53,7 +53,7 @@ const script = {
 	},
 
 	C2: {
-		text: 	"Use this tool to find out what type of tenancy you have, then come back to find out how PRT might affect you. https://scotland.shelter.org.uk/get_advice/downloads_and_tools/online_checkers/what_kind_of_tenancy_do_i_have", 
+		text: 	"Use this tool to find out what type of tenancy you have, then come back to find out how PRT might affect you. https://scotland.shelter.org.uk/get_advice/downloads_and_tools/online_checkers/what_kind_of_tenancy_do_i_have?utm_source=chatbot", 
 		options: {
 			"Start again": 					"B1"
 		}
@@ -176,7 +176,7 @@ const script = {
 	},
 
 	F2: {
-		text: 	"As before a landlord must register your deposit, with one of the 3 available schemes, within 30 working days of the tenancy starting. Find out more about the schemes https://scotland.shelter.org.uk/get_advice/advice_topics/paying_for_a_home/deposits/tenancy_deposit_schemes"
+		text: 	"As before a landlord must register your deposit, with one of the 3 available schemes, within 30 working days of the tenancy starting. Find out more about the schemes https://scotland.shelter.org.uk/get_advice/advice_topics/paying_for_a_home/deposits/tenancy_deposit_schemes?utm_source=chatbot"
 
 		//end!
 	},
@@ -188,13 +188,13 @@ const script = {
 	},
 
 	F4: {
-		text: 	"If at any time you want to leave the property you must give your landlord a minimum of 28 days writen notice, that you want to move out. If your landlord wants you to leave, they need to give you 28 days or 84 days notice, depending on the ground. Find out more about the eviction process. https://scotland.shelter.org.uk/get_advice/advice_topics/eviction/eviction_of_private_tenants/eviction_of_private_residential_tenancy_tenants"
+		text: 	"If at any time you want to leave the property you must give your landlord a minimum of 28 days writen notice, that you want to move out. If your landlord wants you to leave, they need to give you 28 days or 84 days notice, depending on the ground. Find out more about the eviction process. https://scotland.shelter.org.uk/get_advice/advice_topics/eviction/eviction_of_private_tenants/eviction_of_private_residential_tenancy_tenants?utm_source=chatbot"
 
 		//end!
 	},
 
 	F5: {
-		text: 	"The new Private Residential Tenancy will have no end date. This means that your landlord can't make you leave after a fixed period like they could with a short assured tenancy. If your landlord wants you to leave, they need to give you 28 days or 84 days notice, depending on the ground. Find out more about the eviction process. https://scotland.shelter.org.uk/get_advice/advice_topics/eviction/eviction_of_private_tenants/eviction_of_private_residential_tenancy_tenants"
+		text: 	"The new Private Residential Tenancy will have no end date. This means that your landlord can't make you leave after a fixed period like they could with a short assured tenancy. If your landlord wants you to leave, they need to give you 28 days or 84 days notice, depending on the ground. Find out more about the eviction process. https://scotland.shelter.org.uk/get_advice/advice_topics/eviction/eviction_of_private_tenants/eviction_of_private_residential_tenancy_tenants?utm_source=chatbot"
 
 		//end!
 	},
@@ -208,7 +208,7 @@ const script = {
 
 	F7: {
 		text: 	"Your landlord will need to give you either 28 or 84 days notice that they intend to apply for an eviction notice. The period of notice will depend on how long you have been in the property and which one of the 18 grounds they are using to apply for eviction. The form that your landlord needs to use is called a 'notice to leave', this replaces the old 'notice to quit'"
-				+ "\n\n\n\nIf you haven't left the property after the notice period is over, then the landlord will then have to apply to the Housing and Property Chamber of the First Tier Tribunal for an eviction order. https://scotland.shelter.org.uk/get_advice/advice_topics/eviction/eviction_of_private_tenants/eviction_of_private_residential_tenancy_tenants"
+				+ "\n\n\n\nIf you haven't left the property after the notice period is over, then the landlord will then have to apply to the Housing and Property Chamber of the First Tier Tribunal for an eviction order. https://scotland.shelter.org.uk/get_advice/advice_topics/eviction/eviction_of_private_tenants/eviction_of_private_residential_tenancy_tenants?utm_source=chatbot"
 
 		//end!
 	},
@@ -270,7 +270,7 @@ const script = {
 	},
 
 	F17: {
-		text: 	"You have to make sure the property meets the repairing standard at the start the tenancy, and to complete any outstanding repairs in a resonable time. If the property does not meet the repairing standard then the tenant can report you to the Housing and Property Chamber of the First Tier Tribunal.  https://scotland.shelter.org.uk/get_advice/advice_topics/repairs_and_bad_conditions/repairs_in_private_rented_accommodation/who_is_responsible_for_repairs"
+		text: 	"You have to make sure the property meets the repairing standard at the start the tenancy, and to complete any outstanding repairs in a resonable time. If the property does not meet the repairing standard then the tenant can report you to the Housing and Property Chamber of the First Tier Tribunal.  https://scotland.shelter.org.uk/get_advice/advice_topics/repairs_and_bad_conditions/repairs_in_private_rented_accommodation/who_is_responsible_for_repairs?utm_source=chatbot"
 		//end!
 	},
 
