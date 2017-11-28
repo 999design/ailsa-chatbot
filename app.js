@@ -60,9 +60,7 @@ bot.on('conversationUpdate', function (message) {
                     //all in, go!
                     bot.beginDialog(conversations[convId].userAddress, '/');
 */
-                analytics.start(convId);
                 
-                bot.beginDialog(message.address, entry);
             }
         });
     }
@@ -70,7 +68,7 @@ bot.on('conversationUpdate', function (message) {
 
 });
 
-/*
+
 bot.dialog('/', 
     (session) => {
 
@@ -79,7 +77,7 @@ bot.dialog('/',
         session.beginDialog(entry);
     }
 );
-*/
+
 
 //mains
 var mains = require('./dialogs/main');
