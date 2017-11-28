@@ -3,7 +3,7 @@ require('dotenv').load();
 
 var visitors = {};
 
-//random ID will be generated, everything will look like this user (until restart)
+//pass conversation ID
 function init(uid) {
 	if (!visitors[uid]) {
 		console.log('Init analytics', uid);
