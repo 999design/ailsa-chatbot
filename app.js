@@ -61,9 +61,11 @@ bot.on('conversationUpdate', function (message) {
                     bot.beginDialog(conversations[convId].userAddress, '/');
 */
                 
+                bot.beginDialog(message.address, '/');
             }
         });
     }
+
     // can say bye on message.membersRemoved
 
 });
