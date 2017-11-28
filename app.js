@@ -36,7 +36,7 @@ bot.on('conversationUpdate', function (message) {
             if (identity.id != message.address.bot.id) {
                 //someone other than us got added
                 console.log('User joined?');
-
+/*
                 if (!conversations[convId])
                     conversations[convId] = {};
 
@@ -45,11 +45,12 @@ bot.on('conversationUpdate', function (message) {
                 if (conversations[convId].botAddress)
                     //all in, go!
                     bot.beginDialog(conversations[convId].userAddress, '/');
+*/
             }
             else if (identity.id == message.address.bot.id) {
                 //we joined?
                 console.log('We joined?');
-                
+/*
                 if (!conversations[convId])
                     conversations[convId] = {};
 
@@ -58,6 +59,8 @@ bot.on('conversationUpdate', function (message) {
                 if (conversations[convId].userAddress)
                     //all in, go!
                     bot.beginDialog(conversations[convId].userAddress, '/');
+*/
+                bot.beginDialog(message.address, '/');
             }
         });
     }
