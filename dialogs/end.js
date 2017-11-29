@@ -42,13 +42,13 @@ module.exports = [
     },
     (session, result) => {
         analytics.answer(session.message.address.conversation.id, result.response.entity);
-        
+
     	if (result.response.entity == restart)
     		//this is tenant/landlord choice, should remember!
             session.beginDialog(startPoint);
         else if (result.response.entity == goback)
-            //analytics tracks last
-            session.beginDialog(analytics.previous(session.message.address.conversation.id));
+            //analytics tracks history
+            session.beginDialog(analytics.previous(session.message.address.conversation.id, 2));
         else 
             session.send('OK, bye for now!');
     }

@@ -8,7 +8,7 @@ function init(uid) {
 	if (!visitors[uid]) {
 		console.log('Init analytics', uid);
 
-		visitors[uid] = {ua: ua(process.env.ANALYTCIS_ID, uid)};
+		visitors[uid] = {ua: ua(process.env.ANALYTCIS_ID, uid), history: []};
 
 		//don;t seem to get events without pageview? so log a dummy one
 		visitors[uid].ua.pageview("/chatbot").send();
@@ -29,7 +29,7 @@ exports.view = function(uid, dlg) {
 	init(uid);
 	//keep last
 	visitors[uid].prev = visitors[uid].cur;
-	visitors[uid].cur = dlg;
+	visitors[uid].history.push(dlg);
 	visitors[uid].ua.event('bot-view', dlg).send();
 };
 
@@ -49,9 +49,9 @@ exports.feedback = function(uid, ans) {
 	visitors[uid].ua.event('bot-feedback', ans).send();
 };
 
-exports.previous = function(uid) {
+exports.previous = function(uid, n) {
 	if (visitors[uid])
-		return visitors[uid].prev;
+		return visitors[uid].history[visitors[uid].history.length - n - 1];
 }
 
 //should delete entries for visitors when done!
