@@ -56,7 +56,7 @@ module.exports = [
             session.beginDialog(startPoint);
         else if (result.response.entity == goback) {
             //analytics tracks history
-            var dlg = history.previous(convId, 2);
+            var dlg = history.previous(convId);
             session.beginDialog(dlg);
         }
         else {

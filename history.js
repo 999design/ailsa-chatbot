@@ -21,7 +21,7 @@ exports.add = function(uid, dlg) {
 
 exports.previous = function(uid, n) {
 	if (visitors[uid])
-		return visitors[uid][visitors[uid].length - n - 1];
+		return visitors[uid][visitors[uid].length - (n || 1) - 1];
 }
 
 exports.end = function(uid) {
