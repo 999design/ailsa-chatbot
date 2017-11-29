@@ -2,6 +2,9 @@ var builder = require('botbuilder');
 var analytics = require('../analytics');
 
 const startPoint = "entry";
+const restart = "Yes, start over";
+const goback = "Yes, go back";
+const no = "No thanks";
 
 module.exports = [
     (session) => {
@@ -22,7 +25,7 @@ module.exports = [
 
         	builder.Prompts.choice(session,
 	            'Would you like to find out anything else?',
-	            ['Yes', 'No'],
+	            [restart, goback, no],
 	            { listStyle: builder.ListStyle.button }
             );
        	}
@@ -32,15 +35,20 @@ module.exports = [
 
             builder.Prompts.choice(session,
 	            'Would you like to try again?',
-	            ['Yes', 'No'],
+	            [restart, goback, no],
 	            { listStyle: builder.ListStyle.button }
             );
         }
     },
     (session, result) => {
-    	if (result.response.entity == 'Yes')
+        analytics.answer(session.message.address.conversation.id, result.response.entity);
+        
+    	if (result.response.entity == restart)
     		//this is tenant/landlord choice, should remember!
             session.beginDialog(startPoint);
+        else if (result.response.entity == goback)
+            //analytics tracks last
+            session.beginDialog(analytics.previous(session.message.address.conversation.id));
         else 
             session.send('OK, bye for now!');
     }
