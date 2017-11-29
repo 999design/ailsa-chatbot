@@ -24,7 +24,7 @@ module.exports = [
 
         if (result.response.entity == 'Yes') {
 
-            session.send("Great, have a good day! And remember if you need housing advice in the future you can visit our Get Advice pages. https://scotland.shelter.org.uk/get_advice?utm_source=chatbot");
+            session.send("Great, have a good day! And remember if you need housing advice in the future you can visit our [Get Advice pages](https://scotland.shelter.org.uk/get_advice?utm_source=chatbot).");
 
             setTimeout(function () {
             	builder.Prompts.choice(session,
@@ -36,7 +36,7 @@ module.exports = [
        	}
         else {
 
-            session.send("I'm sorry that I couldn't help you, I'm just a robot after all. Here's how you can contact us https://scotland.shelter.org.uk/about_us/contact_us?utm_source=chatbot");
+            session.send("I'm sorry that I couldn't help you, I'm just a robot after all. Why not [contact us](https://scotland.shelter.org.uk/about_us/contact_us?utm_source=chatbot)?");
 
             setTimeout(function () {
                 builder.Prompts.choice(session,
