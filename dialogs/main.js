@@ -13,7 +13,7 @@ const script = {
 			"Great!": 	"entry"
 		}
 	},
-	
+
 	entry: {
 		text: 	"Are you a landlord or a tenant?",
 		options: {
@@ -306,7 +306,7 @@ const script = {
 
 var dialogs = {};
 
-for (var partname in script) {
+for (let partname in script) {
 
 	let part = script[partname];
 	let txt = part.text;
