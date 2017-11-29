@@ -27,7 +27,7 @@ var conversations = {};
 //This works in emulator, not facebook/directline for webchat
 //Handle hello/bye
 bot.on('conversationUpdate', function (message) {
-    console.dir(message);
+    console.log('conversationUpdate', message);
 
     var convId = message.address.conversation.id;
 
@@ -35,7 +35,7 @@ bot.on('conversationUpdate', function (message) {
         message.membersAdded.forEach(function (identity) {
             if (identity.id != message.address.bot.id) {
                 //someone other than us got added
-                console.log('User joined?');
+                console.log('User joined');
 /*
                 if (!conversations[convId])
                     conversations[convId] = {};
@@ -49,7 +49,7 @@ bot.on('conversationUpdate', function (message) {
             }
             else if (identity.id == message.address.bot.id) {
                 //we joined?
-                console.log('We joined?');
+                console.log('We joined');
 /*
                 if (!conversations[convId])
                     conversations[convId] = {};
@@ -67,11 +67,37 @@ bot.on('conversationUpdate', function (message) {
             }
         });
     }
+    else if (message.membersRemoved) {
+        message.membersRemoved.forEach(function (identity) {
+            if (identity.id != message.address.bot.id) {
+                //someone other than us left
+                console.log('User left');
 
-    // can say bye on message.membersRemoved
+            }
+            else if (identity.id == message.address.bot.id) {
+                //we left?
+                console.log('We left');
+
+            }
+        });
+    }
 
 });
 
+//cleanup 
+
+//never seen this one!
+bot.on('endOfConversation', function (message) {
+    console.log('endOfConversation', message);
+    //var convId = message.address.conversation.id;
+    //analytics.end(convId);
+});
+
+bot.on('deleteUserData', function(message) {
+    console.log('deleteUserData', message);
+    var convId = message.address.conversation.id;
+    analytics.end(convId);
+});
 
 bot.dialog('/', 
     (session) => {

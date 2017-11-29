@@ -22,6 +22,13 @@ exports.start = function(uid) {
 	visitors[uid].ua.event('bot-start').send();
 };
 
+exports.end = function(uid) {
+	console.log('End', uid);
+
+	//help with cleanup!
+	delete visitors[uid];
+};
+
 //see dialog
 exports.view = function(uid, dlg) {
 	console.log('View', uid, dlg);

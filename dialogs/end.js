@@ -41,7 +41,8 @@ module.exports = [
         }
     },
     (session, result) => {
-        analytics.answer(session.message.address.conversation.id, result.response.entity);
+        var convId = session.message.address.conversation.id;
+        analytics.answer(convId, result.response.entity);
 
     	if (result.response.entity == restart)
     		//this is tenant/landlord choice, should remember!
@@ -49,8 +50,10 @@ module.exports = [
         else if (result.response.entity == goback)
             //analytics tracks history
             session.beginDialog(analytics.previous(session.message.address.conversation.id, 2));
-        else 
+        else {
             session.send('OK, bye for now!');
+            analytics.end(convId);
+        }
     }
 
 ];
