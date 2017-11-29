@@ -20,6 +20,8 @@ exports.add = function(uid, dlg) {
 };
 
 exports.previous = function(uid, n) {
+	console.log('previous', histories[uid]);
+
 	if (histories[uid])
 		return histories[uid][histories[uid].length - (n || 1) - 1];
 }
