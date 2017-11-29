@@ -1,12 +1,12 @@
 
-var visitors = {};
+var histories = {};
 
 //pass conversation ID
 function init(uid) {
-	if (!visitors[uid]) {
+	if (!histories[uid]) {
 		console.log('Begin history', uid);
 
-		visitors[uid] = [];
+		histories[uid] = [];
 	}
 }
 
@@ -16,15 +16,15 @@ exports.add = function(uid, dlg) {
 
 	init(uid);
 	//keep track
-	visitors[uid].push(dlg);
+	histories[uid].push(dlg);
 };
 
 exports.previous = function(uid, n) {
-	if (visitors[uid])
-		return visitors[uid][visitors[uid].length - (n || 1) - 1];
+	if (histories[uid])
+		return histories[uid][histories[uid].length - (n || 1) - 1];
 }
 
 exports.end = function(uid) {
 	//try to help memory management
-	delete visitors[uid];
+	delete histories[uid];
 }

@@ -57,11 +57,13 @@ module.exports = [
         else if (result.response.entity == goback) {
             //analytics tracks history
             var dlg = history.previous(convId);
-            session.beginDialog(dlg);
+            console.log('Going back to', dlg);
+            session.beginDialog(dlg || startPoint);
         }
         else {
             session.send('OK, bye for now!');
             analytics.end(convId);
+            history.end(convId);
         }
     }
 

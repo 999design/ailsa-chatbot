@@ -93,12 +93,14 @@ bot.on('endOfConversation', function (message) {
     console.log('endOfConversation', message);
     //var convId = message.address.conversation.id;
     //analytics.end(convId);
+    //history.end(convId);
 });
 
 bot.on('deleteUserData', function(message) {
     console.log('deleteUserData', message);
     var convId = message.address.conversation.id;
     analytics.end(convId);
+    history.end(convId);
 });
 
 bot.dialog('/', 
