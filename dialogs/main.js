@@ -7,14 +7,18 @@ var analytics = require('../analytics');
 
 const script = {
 
+	intro: {
+		text: "Hello, I'm Ailsa, and I'm a robot. " + String.fromCharCode(0xD83E, 0xDD16) + "\n\n\n\nI can help you find out what the Private Residential Tenancy will mean to you if you're a private landlord or tenant.",
+		options: {
+			"Great!": 	"entry"
+		}
+	},
+	
 	entry: {
-		text: 	"Hello, I'm Ailsa, and I'm a robot. " + String.fromCharCode(0xD83E, 0xDD16) + "\n\n\n\nI can help you find out what the Private Residential Tenancy will mean to you if you're a private landlord or tenant. Are you a landlord or a tenant?",
+		text: 	"Are you a landlord or a tenant?",
 		options: {
 			"I'm a tenant": 	"B1",
 			"I'm a landlord": 		"B2"
-		}, 
-		action: (session, next) => {
-			console.log("action");
 		}
 	},
 

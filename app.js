@@ -61,7 +61,9 @@ bot.on('conversationUpdate', function (message) {
                     bot.beginDialog(conversations[convId].userAddress, '/');
 */
                 
-                bot.beginDialog(message.address, 'init');
+                //user doesn;t seem to join in directline until they send something, then  root is launched
+                //answer to this is effectively ignored
+                bot.beginDialog(message.address, 'intro');
             }
         });
     }
@@ -71,7 +73,7 @@ bot.on('conversationUpdate', function (message) {
 });
 
 
-bot.dialog('init', 
+bot.dialog('/', 
     (session) => {
 
         analytics.start(session.message.address.conversation.id);
