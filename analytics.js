@@ -11,7 +11,7 @@ function init(uid) {
 		visitors[uid] = {ua: ua(process.env.ANALYTCIS_ID, uid)};
 
 		//don;t seem to get events without pageview? so log a dummy one
-		visitors[uid].pageview("/chatbot").send();
+		visitors[uid].ua.pageview("/chatbot").send();
 	}
 }
 
