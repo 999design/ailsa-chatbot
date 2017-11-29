@@ -4,11 +4,12 @@ var analytics = require('../analytics');
 // =============================================
 // CONTENT
 
+const endDelay = 3000;//msecs
 
 const script = {
 
 	intro: {
-		text: "Hello, I'm Ailsa, and I'm a robot. " + String.fromCharCode(0xD83E, 0xDD16) + "\n\n\n\nI can help you find out what the Private Residential Tenancy will mean to you if you're a private landlord or tenant.",
+		text: "Hello, I'm Ailsa, and I'm your Shelter Scotland assistant " + String.fromCharCode(0xD83E, 0xDD16) + "\n\n\n\nI can help you find out what the Private Residential Tenancy will mean to you if you're a private landlord or tenant.",
 		options: {
 			"Great!": 	"entry"
 		}
@@ -19,14 +20,16 @@ const script = {
 		options: {
 			"I'm a tenant": 	"B1",
 			"I'm a landlord": 		"B2"
-		}
+		},
+		log: true
 	},
 
 	B1: {
-		text: 	"OK! Do you rent from a private landlord or a letting agent?", 
+		text: 	"OK! Do you rent from a landlord or a letting agent?", 
 		options: {
-			"Yes": 										"C1",
-			"Yes, but I live with my landlord": 		"C1a",
+			"I rent from a landlord": 					"C1",
+			"I rent from a letting agent": 				"C1",
+			"I live with my landlord": 					"C1a",
 			"No": 										 "C1b",
 			"I don't know what type of tenancy I have": "C2",
 		}
@@ -41,7 +44,7 @@ const script = {
 	},
 
 	C1: {
-		text: 	"Did you sign your tenancy agreement or move in before 1st December 2017?", 
+		text: 	"Did your tenancy start before 1st December 2017?", 
 		options: {
 			"Yes": 							"D0",
 			"No, after the 1st December": 	"D1"
@@ -57,14 +60,14 @@ const script = {
 	},
 
 	C2: {
-		text: 	"Use this tool to find out what type of tenancy you have, then come back to find out how PRT might affect you. https://scotland.shelter.org.uk/get_advice/downloads_and_tools/online_checkers/what_kind_of_tenancy_do_i_have?utm_source=chatbot", 
+		text: 	"Use [this tool](https://scotland.shelter.org.uk/get_advice/downloads_and_tools/online_checkers/what_kind_of_tenancy_do_i_have?utm_source=chatbot) to find out what type of tenancy you have, then come back to find out how PRT might affect you.", 
 		options: {
 			"Start again": 					"B1"
 		}
 	},
 
 	C3: {
-		text: 	"If your tenants live with you then they are a common law tenant and the private residential tenancy doesn't apply. I can tell you more about the Private Residential Tenancy anyway? What would you like to know more about?",		options: {
+		text: 	"If your tenants live with you then they are a common law tenant and the private residential tenancy doesn't apply.\n\n\n\nI can tell you more about the Private Residential Tenancy anyway? What would you like to know more about?",		options: {
 			"Rent, deposits and fees": 	"E4",
 			"Tenancy agreements": 		"E5",
 			"Disputes": 				"E6"
@@ -72,7 +75,7 @@ const script = {
 	},
 
 	C4: {
-		text: 	"Did your tenants move in after 1st December 2017?",
+		text: 	"Did the tenancy start after 1st December 2017?",
 		options: {
 			"Yes": 							"D2",
 			"No, before the 1st December": 	"D3"
@@ -80,7 +83,7 @@ const script = {
 	},
 
 	D0: {
-		text: 	"If you were already renting and were an assured or short assured tenant, on 1 December 2017, your tenancy will continue as normal until you or your landlord bring it to an end following the correct procedure. If your landlord then offers you a new tenancy this will be a private residential tenancy. I can tell you more about the Private Residential Tenancy anyway - what would you like to know more about?",
+		text: 	"If you were already renting and were an assured or short assured tenant, on 1st December 2017, your tenancy will continue as normal until you or your landlord bring it to an end following the correct procedure.\n\n\n\nIf your landlord then offers you a new tenancy this will be a private residential tenancy.\n\n\n\nI can tell you more about the Private Residential Tenancy anyway - what would you like to know more about?",
 		options: {
 			"Rent, deposits and fees": 			"E1",
 			"My tenancy agreement": 			"E2",
@@ -100,7 +103,7 @@ const script = {
 	},
 
 	D2: {
-		text: 	"The Private Residential Tenancy applies to any tenants who moved in or signed their agreements on or after December 1st 2017. What would you like to know more about?", 
+		text: 	"The Private Residential Tenancy applies to any tenants who moved in or signed their agreements on or after December 1st 2017.\n\n\n\nWhat would you like to know more about?", 
 		options: {
 			"Rent, deposits and fees": 	"E4",
 			"Tenancy agreements": 		"E5",
@@ -109,7 +112,7 @@ const script = {
 	},
 
 	D3: {
-		text: 	"Ok that means your tenants have an assured or short assured tenanacy, and the tenancy will continue as normal until you or your tenant bring it to an end following the correct procedure. If you then offer your tenant a new tenancy this will be a Private Residential Tenancy. I can tell you more about the Private Residential Tenancy anyway - what would like to know more about?", 
+		text: 	"Ok that means your tenants have an assured or short assured tenanacy, and the tenancy will continue as normal until you or your tenant bring it to an end following the correct procedure.\n\n\n\nIf you then offer your tenant a new tenancy this will be a Private Residential Tenancy. I can tell you more about the Private Residential Tenancy anyway.\n\n\n\nWhat would like to know more about?", 
 		options: {
 			"Rent, deposits and fees": 	"E4",
 			"Tenancy agreements": 		"E5",
@@ -174,13 +177,13 @@ const script = {
 	},
 
 	F1: {
-		text: 	"Under the Private Residential Tenancy your rent can only be increased once every 12 months. Your landlord has to give you 3 months' notice of a rent increase. If you are not happy with the proposed increase you can refer it to a rent officer for review. (Ask Government about contacting rent officer)" 
+		text: 	"Under the Private Residential Tenancy your rent can only be increased once every 12 months. Your landlord has to give you 3 months' notice of a rent increase.\n\n\n\nIf you are not happy with the proposed increase you can refer it to a rent officer for review." 
 		
 		//end!
 	},
 
 	F2: {
-		text: 	"As before a landlord must register your deposit, with one of the 3 available schemes, within 30 working days of the tenancy starting. Find out more about the schemes https://scotland.shelter.org.uk/get_advice/advice_topics/paying_for_a_home/deposits/tenancy_deposit_schemes?utm_source=chatbot"
+		text: 	"As before a landlord must register your deposit, with one of the 3 available schemes, within 30 working days of the tenancy starting. [Find out more about the schemes](https://scotland.shelter.org.uk/get_advice/advice_topics/paying_for_a_home/deposits/tenancy_deposit_schemes?utm_source=chatbot)."
 
 		//end!
 	},
@@ -192,40 +195,40 @@ const script = {
 	},
 
 	F4: {
-		text: 	"If at any time you want to leave the property you must give your landlord a minimum of 28 days writen notice, that you want to move out. If your landlord wants you to leave, they need to give you 28 days or 84 days notice, depending on the ground. Find out more about the eviction process. https://scotland.shelter.org.uk/get_advice/advice_topics/eviction/eviction_of_private_tenants/eviction_of_private_residential_tenancy_tenants?utm_source=chatbot"
+		text: 	"If at any time you want to leave the property you must give your landlord a minimum of 28 days writen notice that you want to move out.\n\n\n\nIf your landlord wants you to leave, they need to give you 28 days or 84 days notice, depending on the ground. [Find out more about the eviction process](https://scotland.shelter.org.uk/get_advice/advice_topics/eviction/eviction_of_private_tenants/eviction_of_private_residential_tenancy_tenants?utm_source=chatbot)."
 
 		//end!
 	},
 
 	F5: {
-		text: 	"The new Private Residential Tenancy will have no end date. This means that your landlord can't make you leave after a fixed period like they could with a short assured tenancy. If your landlord wants you to leave, they need to give you 28 days or 84 days notice, depending on the ground. Find out more about the eviction process. https://scotland.shelter.org.uk/get_advice/advice_topics/eviction/eviction_of_private_tenants/eviction_of_private_residential_tenancy_tenants?utm_source=chatbot"
+		text: 	"The new Private Residential Tenancy will have no end date. This means that your landlord can't make you leave after a fixed period like they could with a short assured tenancy.\n\n\n\nIf your landlord wants you to leave, they need to give you 28 days or 84 days notice, depending on the ground. [Find out more about the eviction process](https://scotland.shelter.org.uk/get_advice/advice_topics/eviction/eviction_of_private_tenants/eviction_of_private_residential_tenancy_tenants?utm_source=chatbot)."
 
 		//end!
 	},
 
 	F6: {
 		text: 	"You have the right to a tenancy agreement, which can be either a written or electronic copy. You should get this on the day you move in, if not, you should get one within 28 days of the start of the tenancy."
-				+ "\n\n\n\nThe Scottish Government has published a model tenancy that your landlord can use to set up a tenancy. This tenancy agreement contains certain statutory terms that outline both parties rights and obligations. http://www.gov.scot/Publications/2017/10/3669"
+				+ "\n\n\n\nThe Scottish Government has published a [model tenancy](http://www.gov.scot/Publications/2017/10/3669) that your landlord can use to set up a tenancy. This tenancy agreement contains certain statutory terms that outline both parties rights and obligations. "
 
 		//end!
 	},
 
 	F7: {
-		text: 	"Your landlord will need to give you either 28 or 84 days notice that they intend to apply for an eviction notice. The period of notice will depend on how long you have been in the property and which one of the 18 grounds they are using to apply for eviction. The form that your landlord needs to use is called a 'notice to leave', this replaces the old 'notice to quit'"
-				+ "\n\n\n\nIf you haven't left the property after the notice period is over, then the landlord will then have to apply to the Housing and Property Chamber of the First Tier Tribunal for an eviction order. https://scotland.shelter.org.uk/get_advice/advice_topics/eviction/eviction_of_private_tenants/eviction_of_private_residential_tenancy_tenants?utm_source=chatbot"
-
+		text: 	"It is your responsibity to take good care of the property and to report any repairs to your landlord ASAP."
+				+"\n\n\n\nThe landlord has the responsabilty to make sure the property meets the repairing standard at the start the tenancy, and to complete any outstanding repairs in a resonable time. If the property does not meet the repairing standard then you can report your landlord to the [Housing and Property Chamber of the First Tier Tribunal](https://www.housingandpropertychamber.scot/)."
+				
 		//end!
 	},
 
 	F8: {
-		text: 	"Your landlord will need to give you either 28 or 84 days notice that they intend to apply for an eviction notice. The period of notice will depend on how long you havr been in the property and which one of the new 18 grounds they are applying for eviction. The form that your landlord needs to use is called a ‘notice to leave’."
-				+"\n\n\n\n If you haven't  left the property after the notice period is over, then the landlord will then have to apply to the Housing and Property Chamber of the First Tier Tribunal for an eviction order."
+		text: 	"Your landlord will need to give you either 28 or 84 days notice that they intend to apply for an eviction notice. The period of notice will depend on how long you have been in the property and which one of the 18 grounds they are using to apply for eviction. The form that your landlord needs to use is called a ‘notice to leave’, this replaces the old 'notice to quit'"
+				+"\n\n\n\n If you haven't left the property after the notice period is over, then the landlord will have to apply to the Housing and Property Chamber of the [First Tier Tribunal](https://scotland.shelter.org.uk/get_advice/advice_topics/eviction/eviction_of_private_tenants/eviction_of_private_residential_tenancy_tenants?utm_source=chatbot) for an eviction order."
 
 		//end!
 	},
 
 	F9: {
-		text: 	"Under the Private Residential Tenancy your rent can only be increased once every 12 months. Your landlord has to give you 3 months of a rent increase. If you are not happy with the proposed increase you can refer it to a rent officer for review. http://www.gov.scot/Topics/Built-Environment/Housing/PrivateRenting/rent-registration-service"
+		text: 	"Under the Private Residential Tenancy your rent can only be increased once every 12 months.\n\n\n\nYour landlord has to give you 3 months notice of a rent increase. If you are not happy with the proposed increase you can refer it to a [rent officer](http://www.gov.scot/Topics/Built-Environment/Housing/PrivateRenting/rent-registration-service) for review."
 
 		//end!
 	},
@@ -234,12 +237,12 @@ const script = {
 
 
 	F10: {
-		text: 	"Under the Private Residential Tenancy the rent can only be increased once every 12 months. You have to give your tenant 3 months' notice of a rent increase. If the tenant is not happy with the proposed increase they can refer it to a rent officer for review. https://rentingscotland.org/landlords-guide/tenancy-deposits"
+		text: 	"Under the Private Residential Tenancy the rent can only be [increased once every 12 months](https://rentingscotland.org/landlords-guide/tenancy-deposits).\n\n\n\nYou have to give your tenant 3 months' notice of a rent increase. If the tenant is not happy with the proposed increase they can refer it to a rent officer for review."
 		//end!
 	},
 
 	F11: {
-		text: 	"You must register the tenant's deposit, with one of the 3 available schemes, within 30 working days of the tenancy starting. https://rentingscotland.org/landlords-guide/tenancy-deposits"
+		text: 	"You must [register the tenant's deposit](https://rentingscotland.org/landlords-guide/tenancy-deposits), with one of the 3 available schemes, within 30 working days of the tenancy starting. "
 		//end!
 	},
 
@@ -262,38 +265,39 @@ const script = {
 	F15: {
 		text: 	"A private residential tenancy can be ended by a tenant giving notice and leaving or a tenant agreeing with the landlord to leave. If neither of these happens and the landlord is wanting possession of the property then they will have to get an eviction order from the Housing and Property Chamber of the First Tier Tribunal."
 				+"\n\n\n\nYou will need to give your tenant either 28 or 84 days notice that you intend to apply for an eviction notice. The period of notice will depend on how long the tenant has been in the property and which ground you are applying for eviction. The form you need to use is called a ‘notice to leave’, this replaces the old 'notice to quit'."
-				+"\n\n\n\nIf the tenant is still in the property after the notice period is over, you will then have to apply to the Housing and Property Chamber of the First Tier Tribunal for an eviction order.  https://www.housingandpropertychamber.scot/"
+				+"\n\n\n\nIf the tenant is still in the property after the notice period is over, you will then have to apply to the [Housing and Property Chamber of the First Tier Tribunal](https://www.housingandpropertychamber.scot/) for an eviction order."
 
 		//end!
 	},
 
 	F16: {
-		text: 	"Tenants have a right to a tenancy agreement, which can be either a written or electronic copy. This is normally signed on the day that the tenant moves in, if not, then they should get an agreement within 28 days of the start of the tenancy. The Scottish Government has published a model tenancy that you can use to set up a tenancy. This tenancy agreement contains certain statutory terms that outline both parties rights and obligations. http://www.gov.scot/Publications/2017/10/3669"
+		text: 	"Tenants have a right to a tenancy agreement, which can be either a written or electronic copy. This is normally signed on the day that the tenant moves in, if not, then they should get an agreement within 28 days of the start of the tenancy."
+				+"\n\n\n\nThe Scottish Government has published a [model tenancy](http://www.gov.scot/Publications/2017/10/3669) that you can use to set up a tenancy. This tenancy agreement contains certain statutory terms that outline both parties rights and obligations. You can [create a model tenancy agreemement](https://www.mygov.scot/tenancy-agreement-scotland/) on the Scottish Government website. "
 
 		//end!
 	},
 
 	F17: {
-		text: 	"You have to make sure the property meets the repairing standard at the start the tenancy, and to complete any outstanding repairs in a resonable time. If the property does not meet the repairing standard then the tenant can report you to the Housing and Property Chamber of the First Tier Tribunal.  https://scotland.shelter.org.uk/get_advice/advice_topics/repairs_and_bad_conditions/repairs_in_private_rented_accommodation/who_is_responsible_for_repairs?utm_source=chatbot"
+		text: 	"You have to make sure the property meets the repairing standard at the start the tenancy, and to complete any outstanding repairs in a resonable time.\n\n\n\nIf the property does not meet the repairing standard then the tenant can report you to the [Housing and Property Chamber of the First Tier Tribunal](https://scotland.shelter.org.uk/get_advice/advice_topics/repairs_and_bad_conditions/repairs_in_private_rented_accommodation/who_is_responsible_for_repairs?utm_source=chatbot)."
 		//end!
 	},
 
 	F18: {
-		text: 	"If you are wanting possession of the property, and the tenants are refusing to move out, you will have to get an eviction order from the Housing and Property Chamber of the First Tier Tribunal."
+		text: 	"If you want possession of the property, and the tenants are refusing to move out, you will have to get an eviction order from the Housing and Property Chamber of the First Tier Tribunal."
 				+"\n\n\n\nYou will need to give your tenant either 28 or 84 days notice that you intend to apply for an eviction notice. The period of notice will depend on how long the tenant has been in the property and which ground you are applying for eviction. The form you need to use is called a ‘notice to leave’, this replaces the old 'notice to quit'."
-				+"\n\n\n\nIf the tenant is still in the property after the notice period is over, you will then have to apply to the Housing and Property Chamber of the First Tier Tribunal for an eviction order. Link: https://www.housingandpropertychamber.scot/"
+				+"\n\n\n\nIf the tenant is still in the property after the notice period is over, you will then have to apply to the [Housing and Property Chamber of the First Tier Tribunal](https://www.housingandpropertychamber.scot/) for an eviction order."
 
 		//end!
 	},
 
 	F19: {
-		text: 	"Under the Private Residential Tenancy the rent can only be increased once every 12 months. You have to give your tenant 3 months' notice of a rent increase. If the tenant is not happy with the proposed increase they can refer it to a rent officer for review. https://rentingscotland.org/landlords-guide/tenancy-deposits"
+		text: 	"Under the Private Residential Tenancy the rent can only be increased once every 12 months. You have to give your tenant 3 months' notice of a rent increase.\n\n\n\nIf the tenant is not happy with the proposed increase they can [refer it to a rent officer for review](https://rentingscotland.org/landlords-guide/tenancy-deposits)."
 
 		//end!
 	},
 
 	F20: {
-		text: 	"The first tier tribunal is where all disputes between landlords and tenants, such as, repairs, evictions and deposits, will now be heard and resolved. It replaces the sheriff court system. https://www.housingandpropertychamber.scot/"
+		text: 	"The [first tier tribunal](https://www.housingandpropertychamber.scot/) is where all disputes between landlords and tenants, such as, repairs, evictions and deposits, will now be heard and resolved. It replaces the sheriff court system."
 
 		//end!
 	}
@@ -321,7 +325,8 @@ for (let partname in script) {
 
 		steps.push(
 			(session) => {
-				analytics.view(session.message.address.conversation.id, partname);
+				if (part.log)
+					analytics.view(session.message.address.conversation.id, partname);
 
 				builder.Prompts.choice(session,
 		            txt,
@@ -333,7 +338,8 @@ for (let partname in script) {
 
 		steps.push(
 			(session, result, next) => {
-				analytics.answer(session.message.address.conversation.id, result.response.entity);
+				if (part.log)
+					analytics.answer(session.message.address.conversation.id, result.response.entity);
 				
 		        for (var opt in part.options) {
 					if (result.response.entity == opt)
@@ -345,12 +351,16 @@ for (let partname in script) {
 	} else {
 		steps.push(
 			(session) => {
+				//note reached an end
 				analytics.view(session.message.address.conversation.id, partname);
 
 				session.send(txt);
 
-				//text-only steps are ENDS
-				session.beginDialog("end");
+				//text-only steps are ENDS, but wait a sec...
+				setTimeout(function () {
+				 	session.beginDialog("end");
+				}, endDelay);
+				
 			}
 		);
 	}
