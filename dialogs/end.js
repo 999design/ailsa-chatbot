@@ -1,7 +1,7 @@
 var builder = require('botbuilder');
 var analytics = require('../analytics');
 
-const startPoint = "B1";
+const startPoint = "entry";
 
 module.exports = [
     (session) => {

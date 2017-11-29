@@ -61,7 +61,7 @@ bot.on('conversationUpdate', function (message) {
                     bot.beginDialog(conversations[convId].userAddress, '/');
 */
                 
-                bot.beginDialog(message.address, '/');
+                bot.beginDialog(message.address, 'init');
             }
         });
     }
@@ -71,7 +71,7 @@ bot.on('conversationUpdate', function (message) {
 });
 
 
-bot.dialog('/', 
+bot.dialog('init', 
     (session) => {
 
         analytics.start(session.message.address.conversation.id);

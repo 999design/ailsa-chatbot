@@ -11,8 +11,13 @@
 
 	<script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script> 
 	<script> 
-		var direct_line_secret = 'Le6tYf9wYy4.cwA.pwY.BlPbdlQrhmUh0bfo7dHXj7H4PF_qe_wXZu1GCI9_CaI';
-		var botid = '5c8de76c-5adb-4cdf-882c-f7758bb24021';
+		//LIVE
+		//var direct_line_secret = 'Le6tYf9wYy4.cwA.pwY.BlPbdlQrhmUh0bfo7dHXj7H4PF_qe_wXZu1GCI9_CaI';
+		//var botid = '5c8de76c-5adb-4cdf-882c-f7758bb24021';
+
+		//DEV
+		var direct_line_secret = 'gCGHFWOeWWY.cwA._2I.pS4u4Tq1iUmvL9xMRngVzZbAhP4UEatBJAQHMycQ_4Y';
+		var botid = '3d1e1ac0-4b84-4035-a4aa-5c14e52ed8e1';
 
 		BotChat.App({ directLine: { secret: direct_line_secret }, user: { id: 'userid' }, bot: { id: botid }, resize: 'detect' }, document.getElementById("bot")); 
 	</script> 
