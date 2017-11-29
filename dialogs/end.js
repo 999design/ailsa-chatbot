@@ -57,7 +57,7 @@ module.exports = [
         else if (result.response.entity == goback) {
             //analytics tracks history
             var dlg = history.previous(convId, 2);
-            session.beginDialog();
+            session.beginDialog(dlg);
         }
         else {
             session.send('OK, bye for now!');
