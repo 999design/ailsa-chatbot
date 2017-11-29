@@ -34,8 +34,7 @@ exports.view = function(uid, dlg) {
 	console.log('View', uid, dlg);
 
 	init(uid);
-	//keep last
-	visitors[uid].prev = visitors[uid].cur;
+	//keep track
 	visitors[uid].history.push(dlg);
 	visitors[uid].ua.event('bot-view', dlg).send();
 };

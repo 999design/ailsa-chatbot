@@ -49,7 +49,7 @@ module.exports = [
             session.beginDialog(startPoint);
         else if (result.response.entity == goback)
             //analytics tracks history
-            session.beginDialog(analytics.previous(session.message.address.conversation.id, 2));
+            session.beginDialog(analytics.previous(convId, 2));
         else {
             session.send('OK, bye for now!');
             analytics.end(convId);
