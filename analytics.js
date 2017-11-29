@@ -8,18 +8,18 @@ function init(uid) {
 	if (!visitors[uid]) {
 		console.log('Init analytics', uid);
 
-		visitors[uid] = {ua: ua(process.env.ANALYTCIS_ID, uid), history: []};
+		visitors[uid] = ua(process.env.ANALYTCIS_ID, uid);
 
 		//don;t seem to get events without pageview? so log a dummy one
-		visitors[uid].ua.pageview("/chatbot").send();
+		visitors[uid].pageview("/chatbot").send();
 	}
 }
 
-exports.start = function(uid) {
+exports.start = function(uid, src) {
 	console.log('Start', uid);
 
 	init(uid);
-	visitors[uid].ua.event('bot-start').send();
+	visitors[uid].event('bot-start', src).send();
 };
 
 exports.end = function(uid) {
@@ -34,9 +34,7 @@ exports.view = function(uid, dlg) {
 	console.log('View', uid, dlg);
 
 	init(uid);
-	//keep track
-	visitors[uid].history.push(dlg);
-	visitors[uid].ua.event('bot-view', dlg).send();
+	visitors[uid].event('bot-view', dlg).send();
 };
 
 //answer
@@ -44,7 +42,7 @@ exports.answer = function(uid, ans) {
 	console.log('Answer', uid, ans);
 
 	init(uid);
-	visitors[uid].ua.event('bot-answer', ans).send();
+	visitors[uid].event('bot-answer', ans).send();
 };
 
 //feedback at end
@@ -52,12 +50,5 @@ exports.feedback = function(uid, ans) {
 	console.log('Feedback', uid, ans);
 
 	init(uid);
-	visitors[uid].ua.event('bot-feedback', ans).send();
+	visitors[uid].event('bot-feedback', ans).send();
 };
-
-exports.previous = function(uid, n) {
-	if (visitors[uid])
-		return visitors[uid].history[visitors[uid].history.length - n - 1];
-}
-
-//should delete entries for visitors when done!

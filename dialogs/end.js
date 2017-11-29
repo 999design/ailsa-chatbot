@@ -1,5 +1,6 @@
 var builder = require('botbuilder');
 var analytics = require('../analytics');
+var history = require('../history');
 
 const startPoint = "entry";
 const restart = "Yes, start over";
@@ -53,9 +54,11 @@ module.exports = [
     	if (result.response.entity == restart)
     		//this is tenant/landlord choice, should remember!
             session.beginDialog(startPoint);
-        else if (result.response.entity == goback)
+        else if (result.response.entity == goback) {
             //analytics tracks history
-            session.beginDialog(analytics.previous(convId, 2));
+            var dlg = history.previous(convId, 2);
+            session.beginDialog();
+        }
         else {
             session.send('OK, bye for now!');
             analytics.end(convId);

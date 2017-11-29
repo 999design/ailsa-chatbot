@@ -63,6 +63,8 @@ bot.on('conversationUpdate', function (message) {
                 
                 //user doesn;t seem to join in directline until they send something, then  root is launched
                 //answer to this is effectively ignored
+                analytics.start(session.message.address.conversation.id, session.message.source);
+                
                 bot.beginDialog(message.address, 'intro');
             }
         });
@@ -101,9 +103,6 @@ bot.on('deleteUserData', function(message) {
 
 bot.dialog('/', 
     (session) => {
-
-        analytics.start(session.message.address.conversation.id);
-
         session.beginDialog(entry);
     }
 );

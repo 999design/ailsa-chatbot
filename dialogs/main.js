@@ -1,5 +1,6 @@
 var builder = require("botbuilder");
 var analytics = require('../analytics');
+var history = require('../history');
 
 // =============================================
 // CONTENT
@@ -325,8 +326,11 @@ for (let partname in script) {
 
 		steps.push(
 			(session) => {
+				var convId = session.message.address.conversation.id;
+				history.add(convId, partname);
+
 				if (part.log)
-					analytics.view(session.message.address.conversation.id, partname);
+					analytics.view(convId, partname);
 
 				builder.Prompts.choice(session,
 		            txt,
@@ -351,8 +355,11 @@ for (let partname in script) {
 	} else {
 		steps.push(
 			(session) => {
+				var convId = session.message.address.conversation.id;
+				history.add(convId, partname);
+				
 				//note reached an end
-				analytics.view(session.message.address.conversation.id, partname);
+				analytics.view(convId, partname);
 
 				session.send(txt);
 
