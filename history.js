@@ -4,6 +4,8 @@ module.exports = function(sharedParameter) {
 
 	//pass conversation ID
 	function init(uid) {
+		console.log('History init', uid);
+
 		if (!histories.hasOwnProperty(uid)) {
 			console.log('Begin history', uid);
 
@@ -15,7 +17,7 @@ module.exports = function(sharedParameter) {
 
         //see dialog
 		add: function(uid, dlg) {
-			console.log('add', uid, dlg);
+			console.log('History add', histories[uid], uid, dlg);
 
 			init(uid);
 			//keep track
@@ -23,13 +25,15 @@ module.exports = function(sharedParameter) {
 		},
 
 		previous: function(uid, n) {
-			console.log('previous', histories[uid]);
+			console.log('History previous', histories[uid]);
 
 			if (histories[uid])
 				return histories[uid][histories[uid].length - (n || 1) - 1];
 		},
 
 		end: function(uid) {
+			console.log('History end', uid);
+			
 			//try to help memory management
 			delete histories[uid];
 		}
