@@ -332,6 +332,8 @@ for (let partname in script) {
 				if (part.log)
 					analytics.view(convId, partname);
 
+				session.sendTyping();
+
 				builder.Prompts.choice(session,
 		            txt,
 		            options,
@@ -357,11 +359,15 @@ for (let partname in script) {
 			(session) => {
 				var convId = session.message.address.conversation.id;
 				history.add(convId, partname);
-				
+
 				//note reached an end
 				analytics.view(convId, partname);
 
+				session.sendTyping();
+
 				session.send(txt);
+
+				session.sendTyping();
 
 				//text-only steps are ENDS, but wait a sec...
 				setTimeout(function () {

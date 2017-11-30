@@ -14,6 +14,8 @@ module.exports = [
         //note reached here
         analytics.view(session.message.address.conversation.id, 'end');
 
+        session.sendTyping();
+        
         builder.Prompts.choice(session,
             'Thanks for chatting, did you find what you were looking for?',
             ['Yes', 'No'],
@@ -24,7 +26,11 @@ module.exports = [
 
         if (result.response.entity == 'Yes') {
 
+            session.sendTyping();
+
             session.send("Great, have a good day! And remember if you need housing advice in the future you can visit our [Get Advice pages](https://scotland.shelter.org.uk/get_advice?utm_source=chatbot).");
+
+            session.sendTyping();
 
             setTimeout(function () {
             	builder.Prompts.choice(session,
@@ -35,8 +41,11 @@ module.exports = [
             }, endDelay);
        	}
         else {
+            session.sendTyping();
 
             session.send("I'm sorry that I couldn't help you, I'm just a robot after all. Why not [contact us](https://scotland.shelter.org.uk/about_us/contact_us?utm_source=chatbot)?");
+
+            session.sendTyping();
 
             setTimeout(function () {
                 builder.Prompts.choice(session,
