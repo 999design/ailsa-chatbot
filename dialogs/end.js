@@ -15,7 +15,7 @@ module.exports = [
         analytics.view(session.message.address.conversation.id, 'end');
 
         session.sendTyping();
-        
+
         builder.Prompts.choice(session,
             'Thanks for chatting, did you find what you were looking for?',
             ['Yes', 'No'],
@@ -24,9 +24,9 @@ module.exports = [
     (session, result) => {
         analytics.feedback(session.message.address.conversation.id, result.response.entity);
 
-        if (result.response.entity == 'Yes') {
+        session.sendTyping();
 
-            session.sendTyping();
+        if (result.response.entity == 'Yes') {
 
             session.send("Great, have a good day! And remember if you need housing advice in the future you can visit our [Get Advice pages](https://scotland.shelter.org.uk/get_advice?utm_source=chatbot).");
 
@@ -41,7 +41,6 @@ module.exports = [
             }, endDelay);
        	}
         else {
-            session.sendTyping();
 
             session.send("I'm sorry that I couldn't help you, I'm just a robot after all. Why not [contact us](https://scotland.shelter.org.uk/about_us/contact_us?utm_source=chatbot)?");
 
@@ -60,6 +59,8 @@ module.exports = [
         var convId = session.message.address.conversation.id;
         //analytics.answer(convId, result.response.entity);
 
+        session.sendTyping();
+        
     	if (result.response.entity == restart)
     		//this is tenant/landlord choice, should remember!
             session.beginDialog(startPoint);

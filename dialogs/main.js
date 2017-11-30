@@ -347,6 +347,8 @@ for (let partname in script) {
 				if (part.log)
 					analytics.answer(session.message.address.conversation.id, result.response.entity);
 				
+				session.sendTyping();
+				
 		        for (var opt in part.options) {
 					if (result.response.entity == opt)
 						session.beginDialog(part.options[opt]);
