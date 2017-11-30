@@ -1,32 +1,41 @@
+module.exports = function(sharedParameter) {
 
-var histories = {};
+	var histories = {};
 
-//pass conversation ID
-function init(uid) {
-	if (!histories.hasOwnProperty(uid)) {
-		console.log('Begin history', uid);
+	//pass conversation ID
+	function init(uid) {
+		if (!histories.hasOwnProperty(uid)) {
+			console.log('Begin history', uid);
 
-		histories[uid] = [];
+			histories[uid] = [];
+		}
 	}
-}
 
-//see dialog
-exports.add = function(uid, dlg) {
-	console.log('add', uid, dlg);
+    return {
 
-	init(uid);
-	//keep track
-	histories[uid].push(dlg);
-};
+        //see dialog
+		add: function(uid, dlg) {
+			console.log('add', uid, dlg);
 
-exports.previous = function(uid, n) {
-	console.log('previous', histories[uid]);
+			init(uid);
+			//keep track
+			histories[uid].push(dlg);
+		},
 
-	if (histories[uid])
-		return histories[uid][histories[uid].length - (n || 1) - 1];
-}
+		previous: function(uid, n) {
+			console.log('previous', histories[uid]);
 
-exports.end = function(uid) {
-	//try to help memory management
-	delete histories[uid];
-}
+			if (histories[uid])
+				return histories[uid][histories[uid].length - (n || 1) - 1];
+		},
+
+		end: function(uid) {
+			//try to help memory management
+			delete histories[uid];
+		}
+
+    };
+
+}();
+
+

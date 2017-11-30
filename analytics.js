@@ -1,54 +1,61 @@
-var ua = require('universal-analytics');
-require('dotenv').load();
+module.exports = function(sharedParameter) {
 
-var visitors = {};
+	var ua = require('universal-analytics');
+	require('dotenv').load();
 
-//pass conversation ID
-function init(uid) {
-	if (!visitors[uid]) {
-		console.log('Init analytics', uid);
+	var visitors = {};
 
-		visitors[uid] = ua(process.env.ANALYTCIS_ID, uid);
+	//pass conversation ID
+	function init(uid) {
+		if (!visitors.hasOwnProperty(uid)) {
+			console.log('Init analytics', uid);
 
-		//don;t seem to get events without pageview? so log a dummy one
-		visitors[uid].pageview("/chatbot").send();
+			visitors[uid] = ua(process.env.ANALYTCIS_ID, uid);
+
+			//don;t seem to get events without pageview? so log a dummy one
+			visitors[uid].pageview("/chatbot").send();
+		}
 	}
-}
 
-exports.start = function(uid, src) {
-	console.log('Start', uid);
+	return {
+	
+		start: function(uid, src) {
+			console.log('Start', uid);
 
-	init(uid);
-	visitors[uid].event('bot-start', src).send();
-};
+			init(uid);
+			visitors[uid].event('bot-start', src).send();
+		},
 
-exports.end = function(uid) {
-	console.log('End', uid);
+		end: function(uid) {
+			console.log('End', uid);
 
-	//help with cleanup!
-	delete visitors[uid];
-};
+			//help with cleanup!
+			delete visitors[uid];
+		},
 
-//see dialog
-exports.view = function(uid, dlg) {
-	console.log('View', uid, dlg);
+		//see dialog
+		view: function(uid, dlg) {
+			console.log('View', uid, dlg);
 
-	init(uid);
-	visitors[uid].event('bot-view', dlg).send();
-};
+			init(uid);
+			visitors[uid].event('bot-view', dlg).send();
+		},
 
-//answer
-exports.answer = function(uid, ans) {
-	console.log('Answer', uid, ans);
+		//answer
+		answer: function(uid, ans) {
+			console.log('Answer', uid, ans);
 
-	init(uid);
-	visitors[uid].event('bot-answer', ans).send();
-};
+			init(uid);
+			visitors[uid].event('bot-answer', ans).send();
+		},
 
-//feedback at end
-exports.feedback = function(uid, ans) {
-	console.log('Feedback', uid, ans);
+		//feedback at end
+		feedback: function(uid, ans) {
+			console.log('Feedback', uid, ans);
 
-	init(uid);
-	visitors[uid].event('bot-feedback', ans).send();
-};
+			init(uid);
+			visitors[uid].event('bot-feedback', ans).send();
+		}
+	};
+
+}();
