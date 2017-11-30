@@ -3,7 +3,7 @@ var histories = {};
 
 //pass conversation ID
 function init(uid) {
-	if (!histories[uid]) {
+	if (!histories.hasOwnProperty(uid)) {
 		console.log('Begin history', uid);
 
 		histories[uid] = [];
