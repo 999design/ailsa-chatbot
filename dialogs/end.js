@@ -6,6 +6,7 @@ const startPoint = "entry";
 const restart = "Yes, start over";
 const goback = "Yes, go back";
 const no = "No thanks";
+const opts = [restart, goback, no];
 
 const endDelay = 3000;//msecs
 
@@ -35,7 +36,7 @@ module.exports = [
             setTimeout(function () {
             	builder.Prompts.choice(session,
     	            'Would you like to find out anything else?',
-    	            [restart, goback, no],
+    	            opts,
     	            { listStyle: builder.ListStyle.button }
                 );
             }, endDelay);
@@ -49,7 +50,7 @@ module.exports = [
             setTimeout(function () {
                 builder.Prompts.choice(session,
     	            'Would you like to try again?',
-    	            [restart, goback, no],
+    	            opts,
     	            { listStyle: builder.ListStyle.button }
                 );
             }, endDelay);
