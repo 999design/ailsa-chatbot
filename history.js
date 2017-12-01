@@ -25,7 +25,7 @@ module.exports = function(sharedParameter) {
 		},
 
 		previous: function(uid, n) {
-			console.log('History previous', histories[uid]);
+			console.log('History previous', histories[uid], uid, n);
 
 			if (histories[uid])
 				return histories[uid][histories[uid].length - (n || 1) - 1];
@@ -33,7 +33,7 @@ module.exports = function(sharedParameter) {
 
 		end: function(uid) {
 			console.log('History end', uid);
-			
+
 			//try to help memory management
 			delete histories[uid];
 		}

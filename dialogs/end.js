@@ -7,7 +7,7 @@ const restart = "Yes, start over";
 const goback = "Yes, go back";
 const no = "No thanks";
 
-const endDelay = 2000;//msecs
+const endDelay = 3000;//msecs
 
 module.exports = [
     (session) => {
@@ -28,7 +28,7 @@ module.exports = [
 
         if (result.response.entity == 'Yes') {
 
-            session.send("Great, have a good day! And remember if you need housing advice in the future you can visit our [Get Advice pages](https://scotland.shelter.org.uk/get_advice?utm_source=chatbot).");
+            session.send("Great, thanks for chatting. And remember if you need housing advice in the future you can visit our [Get Advice pages](https://scotland.shelter.org.uk/get_advice?utm_source=chatbot), or for more specific landlord advice visit [Renting Scotland](https://rentingscotland.org/).");
 
             session.sendTyping();
 
@@ -60,7 +60,7 @@ module.exports = [
         //analytics.answer(convId, result.response.entity);
 
         session.sendTyping();
-        
+
     	if (result.response.entity == restart)
     		//this is tenant/landlord choice, should remember!
             session.beginDialog(startPoint);

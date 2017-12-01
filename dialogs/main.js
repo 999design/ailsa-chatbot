@@ -5,7 +5,7 @@ var history = require('../history');
 // =============================================
 // CONTENT
 
-const endDelay = 3000;//msecs
+const endDelay = 5000;//msecs
 
 const script = {
 
@@ -348,7 +348,7 @@ for (let partname in script) {
 					analytics.answer(session.message.address.conversation.id, result.response.entity);
 				
 				session.sendTyping();
-				
+
 		        for (var opt in part.options) {
 					if (result.response.entity == opt)
 						session.beginDialog(part.options[opt]);
