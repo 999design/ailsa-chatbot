@@ -26,13 +26,12 @@ const script = {
 	},
 
 	B1: {
-		text: 	"OK! Do you rent from a landlord or a letting agent?", 
+		text: 	"OK! Who do you rent from?", 
 		options: {
-			"I rent from a landlord": 					"C1",
-			"I rent from a letting agent": 				"C1",
-			"I live with my landlord": 					"C1a",
-			"No": 										 "C1b",
+			"I rent from a landlord who I live with": 	"C1a",
+			"I rent from a landlord or letting agent": 	"C1",
 			"I don't know what type of tenancy I have": "C2",
+			"None of the above": 						 "C1b"
 		}
 	},
 
