@@ -6,7 +6,7 @@ const startPoint = "entry";
 const restart = "Yes, start over";
 const goback = "Yes, go back";
 const no = "No thanks";
-const opts = [restart, goback, no];
+const opts = [restart, /*goback,*/ no];
 
 const endDelay = 3000;//msecs
 
