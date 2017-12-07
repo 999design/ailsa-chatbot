@@ -109,6 +109,9 @@ bot.dialog('/',
     }
 );
 
+// answer get started postback created for facebook button
+bot.beginDialogAction('getstarted', '/entry');
+
 
 //mains
 var mains = require('./dialogs/main');

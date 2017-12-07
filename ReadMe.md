@@ -31,7 +31,15 @@ gCGHFWOeWWY.cwA._2I.pS4u4Tq1iUmvL9xMRngVzZbAhP4UEatBJAQHMycQ_4Y
 
 gCGHFWOeWWY.cwA.cpY.WydwDLqNcxtcQyE1B9EzkI6U3utltjJL9r6ZPHXWCUI
 
+Get Log stream:
 
+curl --user <user> https://shelterdev.scm.azurewebsites.net/api/logstream
+
+Facebook intiate things:
+
+https://www.npmjs.com/package/fb-thread-settings
+
+fb-thread-settings --greeting="Hello, I'm Ailsa, and I'm your Shelter Scotland assistant. I can help you find out what the Private Residential Tenancy will mean to you if you're a private landlord or tenant." --getstarted --token=EAAKAPqZAM5ZBYBAKa6Ovv90trFNbHSuZCrZAcyZCo9oMdpmBm7fL0fZBl1YZAwhAHmFtcdipSgWdBFp1WNA0FB5fnrNmZBnLEINN64DbO1tw68FA4i6BJtgEZBg6zenMcoqid3WavgMWh1rBLfWJ3eQLZBs7EgFKAuoO0Lpe2rU2kDmwZDZD
 
 
 ##Load testing notes:
