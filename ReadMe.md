@@ -31,18 +31,31 @@ gCGHFWOeWWY.cwA._2I.pS4u4Tq1iUmvL9xMRngVzZbAhP4UEatBJAQHMycQ_4Y
 
 gCGHFWOeWWY.cwA.cpY.WydwDLqNcxtcQyE1B9EzkI6U3utltjJL9r6ZPHXWCUI
 
-Get Log stream:
+###Get Log stream:
 
 curl --user <user> https://shelterdev.scm.azurewebsites.net/api/logstream
 
-Facebook intiate things:
+##Facebook 
+
+NB ADD TESTERS TO FB APP AS WELL AS PAGE
+
+###How to get it to kick things off
 
 https://www.npmjs.com/package/fb-thread-settings
 
 fb-thread-settings --greeting="Hello, I'm Ailsa, and I'm your Shelter Scotland assistant. I can help you find out what the Private Residential Tenancy will mean to you if you're a private landlord or tenant." --getstarted --token=EAAKAPqZAM5ZBYBAKa6Ovv90trFNbHSuZCrZAcyZCo9oMdpmBm7fL0fZBl1YZAwhAHmFtcdipSgWdBFp1WNA0FB5fnrNmZBnLEINN64DbO1tw68FA4i6BJtgEZBg6zenMcoqid3WavgMWh1rBLfWJ3eQLZBs7EgFKAuoO0Lpe2rU2kDmwZDZD
 
+###Guide
+
+http://aihelpwebsite.com/Blog/EntryId/7/Creating-A-Facebook-Bot-Using-Microsoft-Bot-Framework
 
 ##Load testing notes:
 
 https://blog.botframework.com/2017/06/19/load-testing-a-bot/
 https://github.com/thirumathi/bottestvsts
+
+##LUIS
+
+http://eu.luis.ai
+
+PLAN: https://docs.microsoft.com/en-us/azure/cognitive-services/luis/plan-your-app

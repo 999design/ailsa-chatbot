@@ -3,6 +3,7 @@ module.exports = function(sharedParameter) {
 	var ua = require('universal-analytics');
 	require('dotenv').load();
 
+	var eventCat = "Bot (Ailsa)"
 	var visitors = {};
 
 	//pass conversation ID
@@ -23,7 +24,7 @@ module.exports = function(sharedParameter) {
 			console.log('Start', uid);
 
 			init(uid);
-			visitors[uid].event('bot-start', src).send();
+			visitors[uid].event(eventCat, 'Start', src).send();
 		},
 
 		end: function(uid) {
@@ -38,7 +39,7 @@ module.exports = function(sharedParameter) {
 			console.log('View', uid, dlg);
 
 			init(uid);
-			visitors[uid].event('bot-view', dlg).send();
+			visitors[uid].event(eventCat, 'View', dlg).send();
 		},
 
 		//answer
@@ -46,7 +47,7 @@ module.exports = function(sharedParameter) {
 			console.log('Answer', uid, ans);
 
 			init(uid);
-			visitors[uid].event('bot-answer', ans).send();
+			visitors[uid].event(eventCat, 'Answer', ans).send();
 		},
 
 		//feedback at end
@@ -54,7 +55,7 @@ module.exports = function(sharedParameter) {
 			console.log('Feedback', uid, ans);
 
 			init(uid);
-			visitors[uid].event('bot-feedback', ans).send();
+			visitors[uid].event(eventCat, 'Feedback', ans).send();
 		}
 	};
 
